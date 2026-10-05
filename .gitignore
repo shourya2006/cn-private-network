@@ -1,0 +1,7 @@
+.DS_Store
+**/*.key
+**/*.srl
+__pycache__/
+*.pyc
+runtime/
+config/network.env

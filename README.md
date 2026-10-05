@@ -8,6 +8,31 @@ As of 5 October 2026, the team has reported all 12 directed LAN pings and comple
 
 Raw evidence and actual network addresses are kept in each member's local, Git-ignored `runtime/` or `evidence/` folders. The private submission bundle and architecture index are being assembled. This public repository contains the implementation plan, backend source, demo runbook, and public certificate; it must never contain `tls/server.key`, credentials, or unreviewed packet captures.
 
+## Team — Packet Pioneers
+
+- Shourya Bafna — Mac 1: DNS and demo client
+- Om Yadav — Mac 2: nginx edge and TLS load balancer
+- Daksh Batra — Mac 3: Backend A and client
+- Aditya Bhardwaj — Mac 4: Backend B and client
+
+## Run the backends
+
+Requires Python 3.9 or newer. From the repository root, run the appropriate command and leave it running during the demo.
+
+Mac 3 / Backend A:
+
+```bash
+python3 -u backend/app.py --name A --port 3001
+```
+
+Mac 4 / Backend B:
+
+```bash
+python3 -u backend/app.py --name B --port 3002
+```
+
+The servers listen on all interfaces. nginx on Mac 2 connects to their current private LAN addresses. Recheck DHCP addresses before starting the edge.
+
 ## Get the project
 
 ```bash

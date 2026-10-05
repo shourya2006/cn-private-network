@@ -1,12 +1,12 @@
 # Computer Networks - Phase 1
 
-Shared project scaffold for the Private Network Service Platform assignment.
+A four-Mac private-network service platform for the course project. The running system uses Mac 1 for DNS, Mac 2 for nginx/TLS and load balancing, and Macs 3 and 4 for two HTTP backends.
 
-## Current progress
+## Current status
 
-- Step 3: project folders created.
-- Step 4: Mac 1 network inventory recorded on 3 October 2026.
-- Steps 5 onward: not executed. Backend, DNS, nginx, and TLS services are not configured or running by this repository.
+As of 5 October 2026, the team has reported all 12 directed LAN pings and completed the DNS, backend, HTTP/HTTPS, TLS trust, caching, Wireshark, HTTP/2, and five controlled-failure demonstrations. Mac 1 directly verified the edge and both backends after the failure tests. These live results depend on the Macs remaining on the project LAN with their services running; check them again before a demo.
+
+Raw evidence and actual network addresses are kept in each member's local, Git-ignored `runtime/` or `evidence/` folders. The private submission bundle and architecture index are being assembled. This public repository contains the implementation plan, backend source, demo runbook, and public certificate; it must never contain `tls/server.key`, credentials, or unreviewed packet captures.
 
 ## Get the project
 
@@ -23,17 +23,17 @@ git pull
 
 ## Implementation instructions
 
-Read [the full Phase 1 implementation plan](docs/CN_Phase1_Implementation_Plan.pdf). It contains all 20 steps, source code to create later, commands for each Mac, checkpoints, packet evidence, and required failure demonstrations. The PDF is instructions, not evidence of deployment.
+Read [the full Phase 1 implementation plan](docs/CN_Phase1_Implementation_Plan.pdf). It contains the 20-step workflow, code and configuration examples, role-specific commands, checkpoints, packet evidence, and five required failure demonstrations. The plan is instructions; live validation and evidence were produced separately on the four Macs.
 
-| Machine | Role | Planned services |
+| Machine | Role | Project ports |
 |---|---|---|
-| Mac 1 | DNS | UDP/TCP 53 |
-| Mac 2 | Edge / load balancer | TCP 8080/8443 |
-| Mac 3 | Backend A + client | TCP 3001 |
-| Mac 4 | Backend B + client | TCP 3002 |
+| Mac 1 | Private DNS and test client | UDP/TCP 53 |
+| Mac 2 | nginx edge and TLS load balancer | TCP 8080/8443 |
+| Mac 3 | Backend A and test client | TCP 3001 |
+| Mac 4 | Backend B and test client | TCP 3002 |
 
-See the public [network inventory template](architecture/network-inventory.md). Actual Mac 1 measurements are kept in an ignored local file, runtime/mac1-network-inventory.private.md. Share measured addresses privately with your team and recheck them on the actual team LAN. Other machines remain pending. The assignment specifies a shared private LAN for evaluation; VPN-based remote preparation needs a separate agreed approach.
+See the [public network inventory template](architecture/network-inventory.md). Measured addresses, masks, gateways, and MACs remain in ignored local files. Recheck them if DHCP changes or a Mac moves to another network. The assignment requires a shared private LAN for evaluation.
 
-Empty tracked folders use .gitkeep so they exist after cloning. Each member can fill the folders for their role when that step is authorized.
+The backend source is [backend/app.py](backend/app.py), and the [demo runbook](docs/Phase1_Demo_Runbook.md) gives the Phase 1 presentation order. The public certificate is [tls/server.crt](tls/server.crt). It is self-signed and must be explicitly trusted by project clients; never bypass certificate validation in demonstration requests.
 
-Private keys, runtime files, and config/network.env are ignored. Never force-add private keys.
+Private keys, `runtime/`, and `config/network.env` are Git-ignored. Do not force-add them.

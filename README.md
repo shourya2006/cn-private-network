@@ -1,4 +1,15 @@
-# Computer Networks - Phase 1
+# Computer Networks Project
+
+## Phase 2 submission
+
+- [Download the Phase 2 submission ZIP](docs/CN_Phase2_Submission.zip) for the configurations, indexed test logs, Wireshark capture, and live demo guide.
+- [Read the Phase 2 final report](docs/CN_Phase2_Final_Report.pdf) for the architecture and results.
+
+On 23 November 2026, the team verified backup DNS, TTL and cache flushing, backend isolation, upstream failover, and controlled standby-edge cutover. The faculty-injected troubleshooting exercise takes place during the live evaluation.
+
+The public files use documentation IPs and substitute Ethernet addresses. The test results, service ports, packet timing, and frame numbers remain available for verification.
+
+## Phase 1 overview
 
 A four-Mac private-network service platform for the course project. The running system uses Mac 1 for DNS, Mac 2 for nginx/TLS and load balancing, and Macs 3 and 4 for two HTTP backends.
 
